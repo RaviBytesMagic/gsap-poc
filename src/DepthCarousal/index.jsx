@@ -6,6 +6,7 @@ import hikingImage from "./assets/hiking.png";
 import coffeeTourImage from "./assets/coffee.png";
 import najdiDiningImage from "./assets/najdi.png";
 import atTuraifImage from "./assets/atturaif.png";
+import LeftAlignedCarousal from "./LeftAlignedCarousal";
 
 const items = [
   {
@@ -38,8 +39,18 @@ const items = [
 
 export default function DepthCarousal() {
   return (
-    <div style={{ height: "350px" }}>
-      <Carousal
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+
+        height: "497px",
+        paddingTop: "55px",
+        paddingBottom: "55px",
+      }}
+    >
+      <LeftAlignedCarousal
         items={items}
         renderItem={(item, index, isActive) => (
           <div

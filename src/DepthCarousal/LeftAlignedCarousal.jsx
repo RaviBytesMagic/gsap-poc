@@ -5,13 +5,14 @@ import "./Carousal.css";
 import CarouselControls from "../common/CarouselControls";
 import { useGSAP } from "@gsap/react";
 
-export default function Carousal({
+export default function LeftAlignedCarousal({
   items = [],
   renderItem, // ✅ you will pass (item, index) => JSX
 }) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [dragX, setDragX] = useState(0);
   const cardRefs = useRef([]);
+  const prevDirectionRef = useRef("");
 
   const [cardWidth, setCardWidth] = useState(220);
 
@@ -29,13 +30,14 @@ export default function Carousal({
 
   useGSAP(() => {
     const dragFactor = dragX / cardWidth;
+    const direction = prevDirectionRef.current;
 
     cardRefs.current.forEach((card, index) => {
       if (!card) return;
 
       let offset = index - activeIndex;
       if (offset < -Math.floor(items.length / 2)) offset += items.length;
-      if (offset > Math.floor(items.length / 2)) offset -= items.length;
+      //   if (offset > Math.floor(items.length / 2)) offset -= items.length;
 
       const progress = offset - dragFactor;
       const distance = Math.abs(progress);
@@ -48,7 +50,7 @@ export default function Carousal({
       const z = isActive ? 300 : 250 - distance * 80;
 
       // Slightly bigger horizontal translation
-      const x = progress * 60;
+      const x = offset > 0 ? progress * 60 : 0;
 
       // Increase rotation for more dramatic parallax feel
       const rotateY = progress * -18;
@@ -60,8 +62,14 @@ export default function Carousal({
       const blurAmount = gsap.utils.clamp(0, 12, distance * 3);
       const filter = isActive ? "blur(0)" : `blur(${blurAmount}px)`;
 
+      if (direction === "prev") {
+        gsap.from(card, {
+          x: -100,
+        });
+      }
+
       gsap.to(card, {
-        x,
+        x: x - 30,
         z,
         scale,
         rotateY,
@@ -76,10 +84,15 @@ export default function Carousal({
     });
   }, [activeIndex, dragX]);
 
-  const goNext = () => setActiveIndex((prev) => (prev + 1) % items.length);
+  const goNext = () => {
+    prevDirectionRef.current = "next";
+    setActiveIndex((prev) => (prev + 1) % items.length);
+  };
 
-  const goPrev = () =>
+  const goPrev = () => {
+    prevDirectionRef.current = "prev";
     setActiveIndex((prev) => (prev - 1 + items.length) % items.length);
+  };
 
   const handlers = useSwipeable({
     onSwiping: ({ deltaX }) => setDragX(-deltaX),
