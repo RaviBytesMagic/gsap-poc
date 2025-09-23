@@ -37,7 +37,7 @@ const items = [
 ];
 // Sa
 
-export default function DepthCarousal() {
+export const LeftDepthCarousal = () => {
   return (
     <div
       style={{
@@ -89,4 +89,58 @@ export default function DepthCarousal() {
       />
     </div>
   );
-}
+};
+
+export const DepthCarousal = () => {
+  return (
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        flexDirection: "column",
+
+        height: "497px",
+        paddingTop: "55px",
+        paddingBottom: "55px",
+      }}
+    >
+      <Carousal
+        items={items}
+        renderItem={(item, index, isActive) => (
+          <div
+            style={{
+              width: "238px",
+              height: "100%",
+              padding: "1rem",
+              borderRadius: "12px",
+              color: "#fff",
+              textAlign: "center",
+              backgroundImage: `url(${item.img})`,
+              backgroundSize: "cover",
+              backgroundPosition: "center",
+              borderRadius: "4px",
+
+              boxShadow: "13px 17px 32.1px 0 rgba(0, 0, 0, 0.45)",
+
+              transition: "transform 0.3s ease, box-shadow 0.3s ease",
+              display: "flex",
+              alignItems: "end",
+              justifyContent: "start",
+            }}
+          >
+            <span
+              style={{
+                color: "#FFF",
+
+                fontSize: "20px",
+                fontWeight: 500,
+              }}
+            >
+              {item.title}
+            </span>
+          </div>
+        )}
+      />
+    </div>
+  );
+};

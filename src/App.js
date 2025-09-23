@@ -1,15 +1,14 @@
 import "./App.css";
 
-import DepthCarousal from "./DepthCarousal";
-import LeftAlignedCarousal from "./DepthCarousal/LeftAlignedCarousal";
+import { DepthCarousal, LeftDepthCarousal } from "./DepthCarousal";
 import DiagonalCarousel from "./DiagonalCarousal";
 
 function App() {
   return (
     <div className="App">
-      <LeftAlignedCarousal />
-      <DepthCarousal />
       <DiagonalCarousel />
+      <DepthCarousal />
+      <LeftDepthCarousal />
     </div>
   );
 }

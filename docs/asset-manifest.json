@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/gsap-poc/static/css/main.49191462.css",
-    "main.js": "/gsap-poc/static/js/main.bea7fa99.js",
+    "main.js": "/gsap-poc/static/js/main.4bd1ea90.js",
     "static/js/453.96453769.chunk.js": "/gsap-poc/static/js/453.96453769.chunk.js",
     "static/media/najdi.png": "/gsap-poc/static/media/najdi.926f3bdb172016806de2.png",
     "static/media/diriyahNights.png": "/gsap-poc/static/media/diriyahNights.5e917e563f5f3a2ff0f8.png",
@@ -13,11 +13,11 @@
     "static/media/coffee.png": "/gsap-poc/static/media/coffee.f54470d6d4c4374f244c.png",
     "index.html": "/gsap-poc/index.html",
     "main.49191462.css.map": "/gsap-poc/static/css/main.49191462.css.map",
-    "main.bea7fa99.js.map": "/gsap-poc/static/js/main.bea7fa99.js.map",
+    "main.4bd1ea90.js.map": "/gsap-poc/static/js/main.4bd1ea90.js.map",
     "453.96453769.chunk.js.map": "/gsap-poc/static/js/453.96453769.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.49191462.css",
-    "static/js/main.bea7fa99.js"
+    "static/js/main.4bd1ea90.js"
   ]
 }
